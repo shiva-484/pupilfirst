@@ -1,77 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equip="X-UA-Compatible" content="IE-edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <title>Registration Form </title>
+<head>
+    <title>form for registration</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
 
-    </head>
-    <body style="background-color: rgb(225, 161, 161)">
-        <div class="relative flex min-h screen flex-col justify-center overflow-hidden py-6 bg-gray-50">
-            <div
-            class="relative bg-white px-6 pt-5 pb-5 shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
-            <div class="mx-auto -w-md">
-                <h1 class="tect-3xl text-center font-bold leading-tight">
-                    Registration Form
-                </h1>
-                <div class="divide-y divide-gray-300/50">
-                    <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
-                        <form id="user-form">
-                            <label for="name" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
-                                Name 
-                            </label>
-                            <input required type="text" id="name" name="name" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus :invalid:border-pink-500 focus:invalid:ring-pink-500"
-                            placeholder="Enter Full Name"></br>
+form {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 300px;
+}
 
-                            <label for="email" class="text-md w-40 initial-block font-medium leading-5 text-gray-700">
-                                Email      
-                            </label>
-                            <input required type="email" id="email" name="email" style="margin-left:120px" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
-                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500" placeholder="Enter Email" ></br>
-                            <label for="password" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
-                                Password
-                            </label>
-                            <input required type="password" id="password" name="password" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
-                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                            placeholder="Enter Password" ></br>
-                            <label for="dob" class="text-md w-40 inline-block font-medium leading-5 text-gray-600">
-                                Date Of Birth
-                            </label>
-                            <input required type="date" id="dob" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
-                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500" ></br>
-                            <label for="acceptTerms"
-                            class="text-md w-50 inline-block font-medium leading-5 text-gray-700">
-                            Accept Terms & Conditions
-                            </label>
-                            <input type="checkbox" id="acceptTerms" name="acceptTerms"
-                            class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:placeholder-gray-500"></br>
-                            <button type="submit"
-                            class="w-fit rounded-lg shadow-md px-8 py-4 bg-pink-500 text-white hover:bg-pink-400 focus:outline-none focus:shadow-outline tansition" 
-                            onclick="corsan()">Submit</button>
-                                
-                            
+label {
+    display: block;
+    margin-bottom: 10px;
+}
 
-                        </form>
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
 
-                    </div>
+button {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-                </div>
-            </div>
-            </div>
-        </div>
-            <div 
-            class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-lg sm:px-10">
-            <div class="mx-auto">
-                <h2 class="text-3xl text-center font-bold leading-tight"> Entries</h2>
-                <div class="divide-y divide-gray-300/50" id="user-entries"></div>
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
 
-            </div>
+table, th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
 
-            </div>
-        
-        <script src="index.js"></script>
-       
-    </body>
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#error-message {
+    color: red;
+    margin-top: 20px;
+}
+
+    </style>
+</head>
+<body>
+
+    <form id="registrationForm" onsubmit="submitForm(event)">
+
+        <label for="name">Name of person</label>
+        <input type="text" id="name" placeholder="Enter a name :" name="name">
+        <label for="email">Email of person </label>
+        <input type="email" id="email" placeholder="Enter a email of person :" name="email">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter a strong password :" name="password">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" placeholder="Enter your birth date :  " name="dob">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">Accept Terms & Conditions</label>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="error-message"></div>
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Dob</th>
+                <th>Accepted Terms?</th>
+            </tr>
+        </thead>
+        <tbody>
+     </tbody>
+    </table>
+     <script>
+        document.addEventListener('DOMContentLoaded', loadEntriesFromLocalStorage);
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const dob = document.getElementById('dob').value;
+            const terms = document.getElementById('terms').checked;
+
+            if (!validateAge(dob)) {
+                document.getElementById('error-message').textContent = 'Please enter a valid date of birth between the ages of 18 and 55.';
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                document.getElementById('error-message').textContent = 'Please enter a valid email address.';
+                return;
+            }
+
+            document.getElementById('error-message').textContent = '';
+
+            const userTable = document.getElementById('userTable');
+            const userTableBody = userTable.querySelector('tbody');
+            const newRow = userTableBody.insertRow();
+            const cells = [name, email, password, dob, terms ];
+
+            cells.forEach((cellData, index) => {
+                const cell = newRow.insertCell(index);
+                cell.textContent = cellData;
+            });
+
+            saveEntryToLocalStorage(cells);
+
+            document.getElementById('registrationForm').reset();
+        }
+
+        function validateAge(dob) {
+            const currentDate = new Date();
+            const userDOB = new Date(dob);
+            const age = currentDate.getFullYear() - userDOB.getFullYear();
+            return age >= 18 && age <= 55;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function saveEntryToLocalStorage(cells) {
+            const entries = JSON.parse(localStorage.getItem('userEntries')) || [];
+            entries.push(cells);
+            localStorage.setItem('userEntries', JSON.stringify(entries));
+            loadEntriesFromLocalStorage(); // Reload entries after saving
+        }
+
+        function loadEntriesFromLocalStorage() {
+            const userTableBody = document.getElementById('userTable').querySelector('tbody');
+            const entries = JSON.parse(localStorage.getItem('userEntries')) || [];
+
+            userTableBody.innerHTML = '';
+
+            entries.forEach((entry) => {
+                const newRow = userTableBody.insertRow();
+                entry.forEach((cellData, index) => {
+                    const cell = newRow.insertCell(index);
+                    cell.textContent = cellData;
+                });
+            });
+        }
+    </script>
+
+</body>
+
 </html>
